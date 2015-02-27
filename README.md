@@ -1,2 +1,0 @@
-# baby-sitter
-baby-sitter
