@@ -1,28 +1,47 @@
 
 public class BabySitter {
 
-	public BabySitter(String string) {
-		// TODO Auto-generated constructor stub
+	private String nom;
+	private Enfant enfant;
+	
+	public BabySitter(String nom) {
+		enfant = null;
+		this.nom = nom;
 	}
 
 	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
+		return nom;
 	}
 
 	public boolean isDisponible() {
-		// TODO Auto-generated method stub
+		if (enfant == null) {
+			return true;
+		}
 		return false;
 	}
 
 	public boolean faireDormirEnfant() {
-		// TODO Auto-generated method stub
+		if(enfant.getStatut() == StatutEnfant.EnfantAMange){
+			enfant.setStatut(StatutEnfant.EnfantADormi);
+			return true;
+		}
 		return false;
 	}
 
 	public boolean nourirEnfant() {
-		// TODO Auto-generated method stub
+		if(enfant.getStatut() == StatutEnfant.EnfantChezBS){
+			enfant.setStatut(StatutEnfant.EnfantAMange);
+			return true;
+		}
 		return false;
+	}
+
+	public void libererEnfant() {
+		enfant = null;
+	}
+
+	public void garderEnfant(Enfant e) {
+		enfant = e;
 	}
 
 }

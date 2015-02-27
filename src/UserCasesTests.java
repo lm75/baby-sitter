@@ -3,7 +3,6 @@ import junit.framework.TestCase;
 
 public class UserCasesTests extends TestCase {
 	
-	
 	/**
 	 * 
 	 */
@@ -22,9 +21,9 @@ public class UserCasesTests extends TestCase {
 		// les parents créé un enfant
 		Enfant e = p.creerEnfant("Josselin");
 		// Le nombre d'enfant de ces parents passe à 1
-		assertEquals(p.getNombreEnfants(), 1);
+		assertEquals(p.getNombreEnfant(), 1);
 		// le status initial de l'enfant est "EnfantChezParent"
-		assertEquals(e.getStatus(), "EnfantChezParent");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
 	}
 	
 	public void testCreationBabySitter(){
@@ -41,13 +40,13 @@ public class UserCasesTests extends TestCase {
 		// les parents créé un enfant
 		Enfant e = p.creerEnfant("Josselin");
 		// le status initial de l'enfant est "EnfantChezParent"
-		assertEquals(e.getStatus(), "EnfantChezParent");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
 		// On créé une baby-Sitter
 		BabySitter bs = new BabySitter("Magali");
 		// On affecte l'enfant précèdant à la baby sitter
-		p.garderEnfant("Josselin", bs);
-		// Le status de l'enfant doit être "EnfantChezBS"
-		assertEquals(e.getStatus(), "EnfantChezBS");
+		p.amenerEnfantBS("Josselin", bs);
+		// Le statut de l'enfant doit être "EnfantChezBS"
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezBS);
 		// La bs n'est plus disponible
 		assertFalse(bs.isDisponible());
 	}
@@ -56,14 +55,14 @@ public class UserCasesTests extends TestCase {
 		Parent p = new Parent("GUILLAUME");
 		Enfant e = p.creerEnfant("Josselin");
 		BabySitter bs = new BabySitter("Magali");
-		p.garderEnfant("Josselin", bs);
-		// Le status de l'enfant doit être "EnfantChezBS"
-		assertEquals(e.getStatus(), "EnfantChezBS");
+		p.amenerEnfantBS("Josselin", bs);
+		// Le statut de l'enfant doit être "EnfantChezBS"
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezBS);
 		assertFalse(bs.faireDormirEnfant());
 		assertTrue(bs.nourirEnfant());
-		assertEquals(e.getStatus(), "EnfantAMange");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantAMange);
 		assertTrue(bs.faireDormirEnfant());
-		assertEquals(e.getStatus(), "EnfantChezBS");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantADormi);
 		assertFalse(bs.nourirEnfant());
 	}
 	
@@ -71,9 +70,9 @@ public class UserCasesTests extends TestCase {
 		Parent p = new Parent("GUILLAUME");
 		Enfant e = p.creerEnfant("Josselin");
 		BabySitter bs = new BabySitter("Magali");
-		p.garderEnfant("Josselin", bs);
+		p.amenerEnfantBS("Josselin", bs);
 		
-		assertTrue(p.recupererEnfant("Josselin"));
+		assertTrue(p.recupererEnfant("Josselin", bs));
 	}
 	
 	/**
@@ -87,33 +86,33 @@ public class UserCasesTests extends TestCase {
 		// les parents créé un enfant
 		Enfant e = p.creerEnfant("Josselin");
 		// Le nombre d'enfant de ces parents passe à 1
-		assertEquals(p.getNombreEnfants(), 1);
+		assertEquals(p.getNombreEnfant(), 1);
 		// le status initial de l'enfant est "EnfantChezParent"
-		assertEquals(e.getStatus(), "EnfantChezParent");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
 		// On créé une baby-Sitter
 		BabySitter bs = new BabySitter("Magali");
 		// On affecte l'enfant précèdant à la baby sitter
-		p.garderEnfant("Josselin", bs);
-		// Le status de l'enfant doit être "EnfantChezBS"
-		assertEquals(e.getStatus(), "EnfantChezBS");
+		p.amenerEnfantBS("Josselin", bs);
+		// Le statut de l'enfant doit être "EnfantChezBS"
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezBS);
 		// L'enfant ne peut pas aller dormir sans avoir manger
 		assertFalse(bs.faireDormirEnfant());
 		assertTrue(bs.nourirEnfant());
-		assertEquals(e.getStatus(), "EnfantAMangé");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantAMange);
 		// La baby sitter endort l'enfant
 		assertTrue(bs.faireDormirEnfant());
 		// Le status de l'enfant doit etre passé "EnfantADormi"
-		assertEquals(e.getStatus(), "EnfantADormi");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantADormi);
 		// L'enfant qui a dormi ne peut pas etre nourri
 		assertFalse(bs.nourirEnfant());
 		Parent p1 = new Parent("MARY");
 		p1.creerEnfant("Laurent");
 		// La baby-sitter ne peut avoir en charge qu'un seul enfant
-		assertFalse(p1.garderEnfant("Laurent", bs));
+		assertFalse(p1.amenerEnfantBS("Laurent", bs));
 		// les parents p viennent chercher leur enfant
-		assertTrue(p.recupererEnfant("Josselin"));
+		assertTrue(p.recupererEnfant("Josselin", bs));
 		// le status de l'enfant repasse à "EnfantChezParent"
-		assertEquals(e.getStatus(), "EnfantChezParent");
+		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
 		
 	}
 }
