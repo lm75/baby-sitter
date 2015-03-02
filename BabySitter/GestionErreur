@@ -1,0 +1,24 @@
+Erreur déclarée : 01/03/2015 
+
+LM75: 
+Erreur apparue : 
+	Distinction des enfants pour un parent. ID ? 
+
+
+Correction erreur : 02/03/2015
+
+JoGui : 
+Answer:
+	Pour un parent donn, chaque enfant doit avoir un nom différent.
+	Les enfants seront donc différenciés et identifiés par leur nom (pour un parent donné).
+exemple Vrai : 
+	Parent 1 : 
+		enfants : Josselin, Laurent
+	Parent 2 : 
+		enfants : Josselin, Magali
+
+exemple Faux :
+	Parent 1 :
+		enfants : Josselin, Josselin
+		
+Erreur fonctionnelle corrigée.

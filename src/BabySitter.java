@@ -28,7 +28,7 @@ public class BabySitter {
 		return false;
 	}
 
-	public boolean nourirEnfant() {
+	public boolean nourrirEnfant() {
 		if(enfant.getStatut() == StatutEnfant.EnfantChezBS){
 			enfant.setStatut(StatutEnfant.EnfantAMange);
 			return true;
