@@ -32,10 +32,10 @@ public class TestsUnitaires extends TestCase {
 		Parent p = new Parent("Magali");
 		Enfant e = p.creerEnfant("Magali");
 		
-		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
+		assertTrue(e.getStatut() instanceof EnfantChezParent);
 		BabySitter bs = new BabySitter("Magali");
 		p.amenerEnfantBS("Magali", bs);
-		assertEquals(e.getStatut(), StatutEnfant.EnfantChezBS);
+		assertTrue(e.getStatut() instanceof EnfantChezBS);
 	}
 	
 	public void testParentRecupererEnfant(){
@@ -53,6 +53,8 @@ public class TestsUnitaires extends TestCase {
 		assertTrue(bs.isDisponible());
 		
 		Parent p = new Parent("Magali");
+		Enfant e = p.creerEnfant("Magali");
+		
 		p.amenerEnfantBS("Magali", bs);
 		assertFalse(bs.isDisponible());
 	}
@@ -65,19 +67,19 @@ public class TestsUnitaires extends TestCase {
 		p.amenerEnfantBS("Magali", bs);
 		assertFalse(bs.faireDormirEnfant());
 		assertTrue(bs.nourrirEnfant());
-		assertEquals(e.getStatut(), StatutEnfant.EnfantAMange);
+		assertTrue(e.getStatut() instanceof EnfantAMange);
 		assertTrue(bs.faireDormirEnfant());
-		assertEquals(e.getStatut(), StatutEnfant.EnfantADormi);
+		assertTrue(e.getStatut() instanceof EnfantADormi);
 	}
 	
 	public void testEnfant() {
 		Enfant e = new Enfant("Magali");
 		assertEquals(e.getNom(),"Magali");
-		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
-		e.setStatut(StatutEnfant.EnfantChezBS);
-		assertEquals(e.getStatut(), StatutEnfant.EnfantChezBS);
-		e.setStatut(StatutEnfant.EnfantChezParent);
-		assertEquals(e.getStatut(), StatutEnfant.EnfantChezParent);
+		assertTrue(e.getStatut() instanceof EnfantChezParent);
+		e.garderEnfant();
+		assertTrue(e.getStatut() instanceof EnfantChezBS);
+		e.libererEnfant();
+		assertTrue(e.getStatut() instanceof EnfantChezParent);
 	}
 }
 

@@ -1,16 +1,14 @@
 
-public class EnfantChezParent extends StatusEnfant {
+public class EnfantChezParent extends StatutEnfant {
 
 	@Override
-	public boolean faireDormirEnfant(Enfant e) {
+	public void faireDormirEnfant(Enfant e) {
 		System.err.println("L'enfant ne peut dormir qu'une fois qu'il est chez la baby-sitter");
-		return false;
 	}
 
 	@Override
-	public boolean nourrirEnfant(Enfant e) {
+	public void nourrirEnfant(Enfant e) {
 		System.err.println("L'enfant ne peut manger qu'une fois qu'il est chez la baby-sitter");
-		return false;
 	}
 
 	@Override
@@ -20,7 +18,7 @@ public class EnfantChezParent extends StatusEnfant {
 
 	@Override
 	public void garderEnfant(Enfant e) {
-		e.setStatus(new EnfantChezBS());
+		e.setStatut(new EnfantChezBS());
 	}
 
 }

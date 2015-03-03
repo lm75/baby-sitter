@@ -2,12 +2,11 @@
 public class Enfant {
 	
 	private StatutEnfant statut;
-	private StatusEnfant status;
 	private String nom;
 
 	public Enfant(String nomEnfant) {
 		nom = nomEnfant;
-		statut = StatutEnfant.EnfantChezParent;
+		statut = new EnfantChezParent();
 	}
 
 	public StatutEnfant getStatut() {
@@ -22,8 +21,21 @@ public class Enfant {
 		this.statut = statut;
 	}
 	
-	public void setStatus(StatusEnfant statut) {
-		this.status = statut;
+	
+	public void faireDormirEnfant(){
+		statut.faireDormirEnfant(this);
+	}
+	
+	public void nourrirEnfant(){
+		statut.nourrirEnfant(this);
+	}
+	
+	public void libererEnfant(){
+		statut.libererEnfant(this);
+	}
+	
+	public void garderEnfant(){
+		statut.garderEnfant(this);
 	}
 
 }

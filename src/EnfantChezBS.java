@@ -1,21 +1,19 @@
 
-public class EnfantChezBS extends StatusEnfant {
+public class EnfantChezBS extends StatutEnfant {
 
 	@Override
-	public boolean faireDormirEnfant(Enfant e) {
+	public void faireDormirEnfant(Enfant e) {
 		System.err.println("Un enfant ne peut pas dormir avant d'avoir mangé");
-		return false;
 	}
 
 	@Override
-	public boolean nourrirEnfant(Enfant e) {
-		e.setStatus(new EnfantADormi());
-		return false;
+	public void nourrirEnfant(Enfant e) {
+		e.setStatut(new EnfantAMange());
 	}
 
 	@Override
 	public void libererEnfant(Enfant e) {
-		e.setStatus(new EnfantChezParent());
+		e.setStatut(new EnfantChezParent());
 	}
 
 	@Override

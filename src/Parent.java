@@ -63,11 +63,11 @@ public class Parent {
 
 	public boolean recupererEnfant(String nom, BabySitter bs) {
 		Enfant e = rechercherEnfant(nom);
-		if(e.getStatut() == StatutEnfant.EnfantChezParent)
+		if(e.getStatut() instanceof EnfantChezParent)
 		{
 			return false;
 		}
-		e.setStatut(StatutEnfant.EnfantChezParent);
+		e.libererEnfant();
 		bs.libererEnfant();
 		return true;
 	}
@@ -75,7 +75,7 @@ public class Parent {
 	public boolean amenerEnfantBS(String nomEnfant, BabySitter bs) {
 		if (isEnfantDejaPresent(nomEnfant) && bs.isDisponible()){
 			Enfant e = rechercherEnfant(nomEnfant);
-			e.setStatut(StatutEnfant.EnfantChezBS);;
+			e.garderEnfant();
 			bs.garderEnfant(e);
 			return true;
 		}

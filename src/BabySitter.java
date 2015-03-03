@@ -21,16 +21,16 @@ public class BabySitter {
 	}
 
 	public boolean faireDormirEnfant() {
-		if(!isDisponible() && enfant.getStatut() == StatutEnfant.EnfantAMange){
-			enfant.setStatut(StatutEnfant.EnfantADormi);
+		if(!isDisponible() && enfant.getStatut() instanceof EnfantAMange){
+			enfant.faireDormirEnfant();
 			return true;
 		}
 		return false;
 	}
 
 	public boolean nourrirEnfant() {
-		if(!isDisponible() && enfant.getStatut() == StatutEnfant.EnfantChezBS){
-			enfant.setStatut(StatutEnfant.EnfantAMange);
+		if(!isDisponible() && enfant.getStatut() instanceof EnfantChezBS){
+			enfant.nourrirEnfant();
 			return true;
 		}
 		return false;
