@@ -43,5 +43,4 @@ public class BabySitter {
 	public void garderEnfant(Enfant e) {
 		enfant = e;
 	}
-
 }

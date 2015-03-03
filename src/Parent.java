@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class Parent {
+public class Parent implements AbstractContainer {
 
 	private String nom;
 	private ArrayList<Enfant> listeEnfants;
@@ -81,5 +81,33 @@ public class Parent {
 		}
 		return false;
 	}
+	
+	@Override
+	public AbstractIterator getIterator() {
+		return new EnfantIterator();
+	}
+
+	private class EnfantIterator implements AbstractIterator {
+
+	      int index;
+
+	      @Override
+	      public boolean hasNext() {
+	      
+	         if(index < listeEnfants.size()){
+	            return true;
+	         }
+	         return false;
+	      }
+
+	      @Override
+	      public Object next() {
+	      
+	         if(this.hasNext()){
+	            return listeEnfants.get(index++);
+	         }
+	         return null;
+	      }		
+	 }
 
 }
