@@ -2,6 +2,7 @@
 public class Enfant {
 	
 	private StatutEnfant statut;
+	private StatusEnfant status;
 	private String nom;
 
 	public Enfant(String nomEnfant) {
@@ -19,6 +20,10 @@ public class Enfant {
 
 	public void setStatut(StatutEnfant statut) {
 		this.statut = statut;
+	}
+	
+	public void setStatus(StatusEnfant statut) {
+		this.status = statut;
 	}
 
 }

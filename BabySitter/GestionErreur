@@ -9,7 +9,7 @@ Correction erreur : 02/03/2015
 
 JoGui : 
 Answer:
-	Pour un parent donn, chaque enfant doit avoir un nom différent.
+	Pour un parent donné, chaque enfant doit avoir un nom différent.
 	Les enfants seront donc différenciés et identifiés par leur nom (pour un parent donné).
 exemple Vrai : 
 	Parent 1 : 

@@ -1,0 +1,1 @@
+As always there is a trade-off, an interface gives you freedom with regard to the base class, an abstract class gives you the freedom to add new methods later. – Erich Gamma

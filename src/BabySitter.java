@@ -21,7 +21,7 @@ public class BabySitter {
 	}
 
 	public boolean faireDormirEnfant() {
-		if(enfant.getStatut() == StatutEnfant.EnfantAMange){
+		if(!isDisponible() && enfant.getStatut() == StatutEnfant.EnfantAMange){
 			enfant.setStatut(StatutEnfant.EnfantADormi);
 			return true;
 		}
@@ -29,7 +29,7 @@ public class BabySitter {
 	}
 
 	public boolean nourrirEnfant() {
-		if(enfant.getStatut() == StatutEnfant.EnfantChezBS){
+		if(!isDisponible() && enfant.getStatut() == StatutEnfant.EnfantChezBS){
 			enfant.setStatut(StatutEnfant.EnfantAMange);
 			return true;
 		}

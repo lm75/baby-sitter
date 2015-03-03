@@ -168,4 +168,29 @@ public class UserCasesTests extends TestCase {
 		// on peut récupérer l'enfant qui a dormi
 		assertTrue(p.recupererEnfant("Josselin", bs));
 	}
+	
+	/**
+	 * JoGUi
+	 * Une baby sitter ne peut pas faire d'action sur un enfant s'il n'en a pas.
+	 */
+	public void testParent(){
+		BabySitter bs = new BabySitter("Quarcia");
+		assertFalse(bs.nourrirEnfant());
+		assertFalse(bs.faireDormirEnfant());
+	}
+	
+	/**
+	 * JoGui
+	 * test la dispo d'une bs en fonction de l'enfant
+	 */
+	public void testDispoBS(){
+		Parent p = new Parent("GUILLAUME");
+		Enfant e = p.creerEnfant("Joss");
+		BabySitter bs = new BabySitter("LM");
+		assertTrue(bs.isDisponible());
+		p.amenerEnfantBS(e.getNom(), bs);
+		assertFalse(bs.isDisponible());
+		p.recupererEnfant("Joss", bs);
+		assertTrue(bs.isDisponible());
+	}
 }

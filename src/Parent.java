@@ -25,7 +25,7 @@ public class Parent {
 	 * @param nomEnfant
 	 * @return
 	 */
-	private boolean isEnfantDejaPresent(String nomEnfant){
+	public boolean isEnfantDejaPresent(String nomEnfant){
 		for( Enfant e : listeEnfants )
 		{
 			if ( e.getNom().equals(nomEnfant)){
@@ -35,7 +35,7 @@ public class Parent {
 		return false;
 	}
 	
-	private Enfant rechercherEnfant(String nomEnfant)
+	public Enfant rechercherEnfant(String nomEnfant)
 	{
 		for( Enfant e : listeEnfants )
 		{
