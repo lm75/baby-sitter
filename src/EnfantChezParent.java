@@ -20,5 +20,9 @@ public class EnfantChezParent extends StatutEnfant {
 	public void garderEnfant(Enfant e) {
 		e.setStatut(new EnfantChezBS());
 	}
+	
+	public String toString(){
+		return "EnfantChezParent";
+	}
 
 }

@@ -3,6 +3,7 @@ public class Enfant {
 	
 	private StatutEnfant statut;
 	private String nom;
+	private BabySitter bs;
 
 	public Enfant(String nomEnfant) {
 		nom = nomEnfant;

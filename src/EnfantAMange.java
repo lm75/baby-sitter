@@ -21,4 +21,8 @@ public class EnfantAMange extends StatutEnfant {
 		System.err.println("On ne peut pas faire garder un enfant qui est déjà chez une baby-sitter");
 	}
 
+	public String toString(){
+		return "EnfantAMange";
+	}
+	
 }

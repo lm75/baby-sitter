@@ -20,5 +20,9 @@ public class EnfantADormi extends StatutEnfant {
 	public void garderEnfant(Enfant e) {
 		System.err.println("On ne peut pas faire garder un enfant qui a déjà chez la baby-sitter");
 	}
+	
+	public String toString(){
+		return "EnfantADormi";
+	}
 
 }

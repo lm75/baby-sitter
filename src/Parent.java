@@ -26,9 +26,11 @@ public class Parent implements AbstractContainer {
 	 * @return
 	 */
 	public boolean isEnfantDejaPresent(String nomEnfant){
-		for( Enfant e : listeEnfants )
+		EnfantIterator ei = (EnfantIterator)getIterator();
+		while ( ei.hasNext() )
 		{
-			if ( e.getNom().equals(nomEnfant)){
+			Enfant e = (Enfant)ei.next();
+			if ( e.getNom().equals(nomEnfant) ){
 				return true;
 			}
 		}
@@ -37,13 +39,25 @@ public class Parent implements AbstractContainer {
 	
 	public Enfant rechercherEnfant(String nomEnfant)
 	{
-		for( Enfant e : listeEnfants )
+		EnfantIterator ei = (EnfantIterator)getIterator();
+		while ( ei.hasNext() )
 		{
-			if ( e.getNom().equals(nomEnfant)){
+			Enfant e = (Enfant)ei.next();
+			if ( e.getNom().equals(nomEnfant) ){
 				return e;
 			}
 		}
 		return null;
+	}
+	
+	public void listerEnfants()
+	{
+		AbstractIterator ei = getIterator();
+		while ( ei.hasNext() )
+		{
+			Enfant e = (Enfant)ei.next();
+			System.out.println( e.getNom() );
+		}
 	}
 	
 	/**
@@ -68,6 +82,17 @@ public class Parent implements AbstractContainer {
 			return false;
 		}
 		e.libererEnfant();
+		if (bs == null){
+			GestionBabySitter gbs = GestionBabySitter.getInstance();
+			AbstractIterator lbs = gbs.getIterator();
+			while (lbs.hasNext())
+			{
+				bs = (BabySitter)lbs.next();
+				if(bs.getEnfant().getNom().equals(nom)){
+					break;
+				}
+			}
+		}
 		bs.libererEnfant();
 		return true;
 	}
@@ -83,13 +108,13 @@ public class Parent implements AbstractContainer {
 	}
 	
 	@Override
-	public AbstractIterator getIterator() {
+	public EnfantIterator getIterator() {
 		return new EnfantIterator();
 	}
 
 	private class EnfantIterator implements AbstractIterator {
 
-	      int index;
+	      int index = 0;
 
 	      @Override
 	      public boolean hasNext() {

@@ -13,6 +13,18 @@ public class BabySitter {
 		return nom;
 	}
 
+	public Enfant getEnfant() {
+		return enfant;
+	}
+
+	public void setEnfant(Enfant enfant) {
+		this.enfant = enfant;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public boolean isDisponible() {
 		if (enfant == null) {
 			return true;

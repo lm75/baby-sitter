@@ -20,5 +20,9 @@ public class EnfantChezBS extends StatutEnfant {
 	public void garderEnfant(Enfant e) {
 		System.err.println("L'enfant est déjà gardé par la baby-sitter");
 	}
+	
+	public String toString(){
+		return "EnfantChezBS";
+	}
 
 }
